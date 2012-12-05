@@ -56,7 +56,8 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-	//cell.textLabel.text = [self.places objectAtIndex:indexPath.row];
+	NSString *placeName = [(NSDictionary *)[self.places objectAtIndex:indexPath.row] objectForKey:@"woe_name"];
+	cell.textLabel.text = placeName;
     
     return cell;
 }
