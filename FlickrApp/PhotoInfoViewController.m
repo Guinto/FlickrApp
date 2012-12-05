@@ -7,14 +7,18 @@
 //
 
 #import "PhotoInfoViewController.h"
+#import "PhotoViewController.h"
 
 @interface PhotoInfoViewController ()
+
+@property (nonatomic) NSURL *selectedPhotoURL;
 
 @end
 
 @implementation PhotoInfoViewController
 
 @synthesize photoDetails = _photoDetails;
+@synthesize selectedPhotoURL = _selectedPhotoURL;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -28,18 +32,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -54,22 +51,32 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+	NSDictionary *photoDetails = (NSDictionary *)[self.photoDetails objectAtIndex:indexPath.row];
+	NSString *title = [photoDetails valueForKeyPath:FLICKR_PHOTO_TITLE];
+	NSString *description = [photoDetails valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
+	if ([title isEqualToString:@""]) {
+		title = [photoDetails valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
+		if ([title isEqualToString:@""]) {
+			title = @"Unknown";
+		}
+	}
+	
+	cell.textLabel.text = title;
+	cell.detailTextLabel.text = description;
     
     return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	[segue.destinationViewController setPhotoURL:self.selectedPhotoURL];
 }
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    self.selectedPhotoURL = [FlickrFetcher urlForPhoto:[self.photoDetails objectAtIndex:indexPath.row] format:FlickrPhotoFormatOriginal];
 }
 
 @end

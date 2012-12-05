@@ -62,9 +62,7 @@
     
 	NSDictionary *place = (NSDictionary *)[self.places objectAtIndex:indexPath.row];
 	
-	NSLog(@"%@", [self.places objectAtIndex:indexPath.row]);
-	
-	cell.textLabel.text =[place objectForKey:@"woe_name"];
+	cell.textLabel.text = [place objectForKey:@"woe_name"];
 	cell.detailTextLabel.text = [place objectForKey:@"_content"];
 	
     return cell;
@@ -80,7 +78,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.selectedPlacePhotoDetails = [FlickrFetcher photosInPlace:[self.places objectAtIndex:indexPath.row] maxResults:INT16_MAX];
+    self.selectedPlacePhotoDetails = [FlickrFetcher photosInPlace:[self.places objectAtIndex:indexPath.row] maxResults:50];
 }
 
 @end
