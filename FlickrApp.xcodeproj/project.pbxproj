@@ -17,12 +17,13 @@
 		D99D4402166EDA3D00FDE745 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D99D4401166EDA3D00FDE745 /* Default@2x.png */; };
 		D99D4404166EDA3D00FDE745 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D99D4403166EDA3D00FDE745 /* Default-568h@2x.png */; };
 		D99D4407166EDA3D00FDE745 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D99D4405166EDA3D00FDE745 /* MainStoryboard.storyboard */; };
-		D99D440A166EDA3D00FDE745 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99D4409166EDA3D00FDE745 /* FirstViewController.m */; };
 		D99D440C166EDA3D00FDE745 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = D99D440B166EDA3D00FDE745 /* first.png */; };
 		D99D440E166EDA3D00FDE745 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D99D440D166EDA3D00FDE745 /* first@2x.png */; };
-		D99D4411166EDA3D00FDE745 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99D4410166EDA3D00FDE745 /* SecondViewController.m */; };
 		D99D4413166EDA3D00FDE745 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = D99D4412166EDA3D00FDE745 /* second.png */; };
 		D99D4415166EDA3D00FDE745 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D99D4414166EDA3D00FDE745 /* second@2x.png */; };
+		D99D4422166EDAF700FDE745 /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D99D4421166EDAF700FDE745 /* FlickrFetcher.m */; };
+		D99D4426166EDD8200FDE745 /* TopPlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99D4425166EDD8200FDE745 /* TopPlacesViewController.m */; };
+		D99D4429166EE10700FDE745 /* RecentlyViewedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99D4428166EE10700FDE745 /* RecentlyViewedViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,14 +41,17 @@
 		D99D4401166EDA3D00FDE745 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		D99D4403166EDA3D00FDE745 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D99D4406166EDA3D00FDE745 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		D99D4408166EDA3D00FDE745 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		D99D4409166EDA3D00FDE745 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		D99D440B166EDA3D00FDE745 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		D99D440D166EDA3D00FDE745 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		D99D440F166EDA3D00FDE745 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		D99D4410166EDA3D00FDE745 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		D99D4412166EDA3D00FDE745 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		D99D4414166EDA3D00FDE745 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		D99D441F166EDAF700FDE745 /* FlickrAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAPIKey.h; sourceTree = "<group>"; };
+		D99D4420166EDAF700FDE745 /* FlickrFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrFetcher.h; sourceTree = "<group>"; };
+		D99D4421166EDAF700FDE745 /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
+		D99D4424166EDD8200FDE745 /* TopPlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopPlacesViewController.h; sourceTree = "<group>"; };
+		D99D4425166EDD8200FDE745 /* TopPlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopPlacesViewController.m; sourceTree = "<group>"; };
+		D99D4427166EE10700FDE745 /* RecentlyViewedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentlyViewedViewController.h; sourceTree = "<group>"; };
+		D99D4428166EE10700FDE745 /* RecentlyViewedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentlyViewedViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,15 +98,18 @@
 		D99D43F3166EDA3D00FDE745 /* FlickrApp */ = {
 			isa = PBXGroup;
 			children = (
+				D99D441F166EDAF700FDE745 /* FlickrAPIKey.h */,
+				D99D4420166EDAF700FDE745 /* FlickrFetcher.h */,
+				D99D4421166EDAF700FDE745 /* FlickrFetcher.m */,
 				D99D43FC166EDA3D00FDE745 /* AppDelegate.h */,
 				D99D43FD166EDA3D00FDE745 /* AppDelegate.m */,
 				D99D4405166EDA3D00FDE745 /* MainStoryboard.storyboard */,
-				D99D4408166EDA3D00FDE745 /* FirstViewController.h */,
-				D99D4409166EDA3D00FDE745 /* FirstViewController.m */,
+				D99D4424166EDD8200FDE745 /* TopPlacesViewController.h */,
+				D99D4425166EDD8200FDE745 /* TopPlacesViewController.m */,
+				D99D4427166EE10700FDE745 /* RecentlyViewedViewController.h */,
+				D99D4428166EE10700FDE745 /* RecentlyViewedViewController.m */,
 				D99D440B166EDA3D00FDE745 /* first.png */,
 				D99D440D166EDA3D00FDE745 /* first@2x.png */,
-				D99D440F166EDA3D00FDE745 /* SecondViewController.h */,
-				D99D4410166EDA3D00FDE745 /* SecondViewController.m */,
 				D99D4412166EDA3D00FDE745 /* second.png */,
 				D99D4414166EDA3D00FDE745 /* second@2x.png */,
 				D99D43F4166EDA3D00FDE745 /* Supporting Files */,
@@ -196,8 +203,9 @@
 			files = (
 				D99D43FA166EDA3D00FDE745 /* main.m in Sources */,
 				D99D43FE166EDA3D00FDE745 /* AppDelegate.m in Sources */,
-				D99D440A166EDA3D00FDE745 /* FirstViewController.m in Sources */,
-				D99D4411166EDA3D00FDE745 /* SecondViewController.m in Sources */,
+				D99D4422166EDAF700FDE745 /* FlickrFetcher.m in Sources */,
+				D99D4426166EDD8200FDE745 /* TopPlacesViewController.m in Sources */,
+				D99D4429166EE10700FDE745 /* RecentlyViewedViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +322,7 @@
 				D99D441A166EDA3D00FDE745 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

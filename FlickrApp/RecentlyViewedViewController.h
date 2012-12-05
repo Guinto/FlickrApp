@@ -1,5 +1,5 @@
 //
-//  SecondViewController.h
+//  RecentlyViewedViewController.h
 //  FlickrApp
 //
 //  Created by Trent Ellingsen on 12/4/12.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController
+@interface RecentlyViewedViewController : UITableViewController
 
 @end
