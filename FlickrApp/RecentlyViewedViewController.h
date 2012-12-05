@@ -10,4 +10,6 @@
 
 @interface RecentlyViewedViewController : UITableViewController
 
+@property (nonatomic) NSArray *recentPhotoDetails;
+
 @end

@@ -31,12 +31,18 @@
 {
     [super viewDidLoad];
 	[self.photoView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:self.photoURL]]];
+	self.scrollView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+	return self.photoView;
 }
 
 @end
