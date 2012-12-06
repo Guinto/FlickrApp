@@ -33,9 +33,6 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <connections>
-                                    <segue destination="PGV-pu-qVA" kind="push" identifier="seePhotoDetail" id="Qpt-Of-WO5"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -44,6 +41,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="LOX-hz-shU"/>
+                    <connections>
+                        <segue destination="PGV-pu-qVA" kind="push" identifier="showPhotoList" id="rFw-Ht-Y0b"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zAl-PN-DIL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -78,9 +78,6 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <connections>
-                                    <segue destination="ilY-xZ-9xQ" kind="push" identifier="showPhoto" id="LZW-01-mbq"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -89,6 +86,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="70b-Nt-Jac"/>
+                    <connections>
+                        <segue destination="ilY-xZ-9xQ" kind="push" identifier="showPhoto" id="ug1-xk-zN5"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kBK-UY-vV1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -177,7 +177,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lb6-ZU-WJJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1209" y="525"/>
+            <point key="canvasLocation" x="1161" y="525"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="15">
@@ -255,7 +255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gc1-dE-Aok" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1687" y="525"/>
+            <point key="canvasLocation" x="1659" y="525"/>
         </scene>
         <!--Navigation Controller - Recently Viewed-->
         <scene sceneID="Qzv-Xt-C4q">
@@ -274,7 +274,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZeS-jE-Xhd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="683" y="525"/>
+            <point key="canvasLocation" x="691" y="525"/>
         </scene>
     </scenes>
     <resources>

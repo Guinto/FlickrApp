@@ -79,6 +79,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedPlacePhotoDetails = [FlickrFetcher photosInPlace:[self.places objectAtIndex:indexPath.row] maxResults:50];
+	[self performSegueWithIdentifier:@"showPhotoList" sender:self];
 }
 
 @end
