@@ -30,18 +30,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	if (!self.photoURL) {
-		self.navigationController.title	= @"No Image URL Found";
-	}
 	UIImage *photoImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:self.photoURL]];
 	
 	self.photoView = [[UIImageView alloc] initWithImage:photoImage];
+	
 	[self.photoView setContentMode:UIViewContentModeScaleAspectFill];
+	self.photoView.frame = CGRectMake(0, 0, self.photoView.frame.size.width, self.view.frame.size.height);
 	
 	[self.scrollView addSubview:self.photoView];
 	
 	self.scrollView.frame = CGRectMake(0, 0, self.photoView.frame.size.width, self.photoView.frame.size.height);
 	[self.scrollView setContentSize:CGSizeMake(self.photoView.frame.size.width, self.photoView.frame.size.height)];
+	
 	self.scrollView.delegate = self;
 }
 

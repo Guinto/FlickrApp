@@ -7,13 +7,13 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "FlickrApp/PhotoViewController.m"
-         timestampString = "376535863.02584"
+         filePath = "FlickrApp/RecentlyViewedViewController.m"
+         timestampString = "376540163.360373"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "45"
-         endingLineNumber = "45"
-         landmarkName = "-viewDidLoad"
+         startingLineNumber = "37"
+         endingLineNumber = "37"
+         landmarkName = "-viewWillAppear:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

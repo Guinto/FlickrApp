@@ -12,6 +12,7 @@
 @interface PhotoInfoViewController ()
 
 @property (nonatomic) NSURL *selectedPhotoURL;
+@property (nonatomic) NSMutableArray *selectedPhotos;
 
 @end
 
@@ -19,6 +20,15 @@
 
 @synthesize photoDetails = _photoDetails;
 @synthesize selectedPhotoURL = _selectedPhotoURL;
+@synthesize selectedPhotos = _selectedPhotos;
+
+- (NSMutableArray *)selectedPhotos
+{
+	if (!_selectedPhotos) {
+		_selectedPhotos = [[NSMutableArray alloc] init];
+	}
+	return _selectedPhotos;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -76,7 +86,20 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	self.selectedPhotoURL = [FlickrFetcher urlForPhoto:[self.photoDetails objectAtIndex:indexPath.row] format:FlickrPhotoFormatLarge];
+	NSDictionary *photo = [self.photoDetails objectAtIndex:indexPath.row];
+	
+	if (![self.selectedPhotos containsObject:photo]) {
+		if ([self.selectedPhotos count] >= 20) {
+			[self.selectedPhotos removeLastObject];
+		}
+		[self.selectedPhotos addObject:photo];
+	}
+	
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults setObject:self.selectedPhotos forKey:@"recentPhotos"];
+	[defaults synchronize];
+	
+	self.selectedPhotoURL = [FlickrFetcher urlForPhoto:photo format:FlickrPhotoFormatLarge];
 	[self performSegueWithIdentifier:@"showPhoto" sender:self];
 }
 

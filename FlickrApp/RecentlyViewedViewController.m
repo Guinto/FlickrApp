@@ -7,14 +7,18 @@
 //
 
 #import "RecentlyViewedViewController.h"
+#import "PhotoViewController.h"
 
 @interface RecentlyViewedViewController ()
+
+@property (nonatomic) NSURL *selectedPhotoURL;
 
 @end
 
 @implementation RecentlyViewedViewController
 
 @synthesize recentPhotoDetails = _recentPhotoDetails;
+@synthesize selectedPhotoURL = _selectedPhotoURL;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -23,6 +27,14 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	self.recentPhotoDetails = [defaults arrayForKey:@"recentPhotos"];
+	[self.tableView reloadData];
 }
 
 - (void)viewDidLoad
@@ -35,11 +47,15 @@
     [super didReceiveMemoryWarning];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	[segue.destinationViewController setPhotoURL:self.selectedPhotoURL];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
     return [self.recentPhotoDetails count];
 }
 
@@ -48,7 +64,18 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+	NSDictionary *photoDetails = (NSDictionary *)[self.recentPhotoDetails objectAtIndex:indexPath.row];
+	NSString *title = [photoDetails valueForKeyPath:FLICKR_PHOTO_TITLE];
+	NSString *description = [photoDetails valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
+	if ([title isEqualToString:@""]) {
+		title = [photoDetails valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
+		if ([title isEqualToString:@""]) {
+			title = @"Unknown";
+		}
+	}
+	
+	cell.textLabel.text = title;
+	cell.detailTextLabel.text = description;
     
     return cell;
 }
@@ -57,13 +84,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+	NSDictionary *photo = [self.recentPhotoDetails objectAtIndex:indexPath.row];
+	self.selectedPhotoURL = [FlickrFetcher urlForPhoto:photo format:FlickrPhotoFormatLarge];
+	[self performSegueWithIdentifier:@"showPhoto" sender:self];
 }
 
 @end

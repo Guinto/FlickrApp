@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FlickrAPIKey.h"
+#import "FlickrFetcher.h"
 
 @interface RecentlyViewedViewController : UITableViewController
 
