@@ -11,7 +11,6 @@
 @interface PhotoViewController : UIViewController <UIScrollViewAccessibilityDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UIImageView *photoView;
 @property (nonatomic) NSURL *photoURL;
 
 @end

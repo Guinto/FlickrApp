@@ -76,7 +76,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	self.selectedPhotoURL = [FlickrFetcher urlForPhoto:[self.photoDetails objectAtIndex:indexPath.row] format:FlickrPhotoFormatOriginal];
+	self.selectedPhotoURL = [FlickrFetcher urlForPhoto:[self.photoDetails objectAtIndex:indexPath.row] format:FlickrPhotoFormatLarge];
 	[self performSegueWithIdentifier:@"showPhoto" sender:self];
 }
 
