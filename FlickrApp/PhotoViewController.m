@@ -35,7 +35,7 @@
 	self.photoView = [[UIImageView alloc] initWithImage:photoImage];
 	
 	[self.photoView setContentMode:UIViewContentModeScaleAspectFill];
-	self.photoView.frame = CGRectMake(0, 0, self.photoView.frame.size.width, self.view.frame.size.height);
+	self.photoView.frame = CGRectMake(0, 0, self.photoView.bounds.size.width, self.photoView.bounds.size.height);
 	
 	[self.scrollView addSubview:self.photoView];
 	
