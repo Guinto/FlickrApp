@@ -11,35 +11,32 @@
 
 @interface TopPlacesViewController ()
 
-@property (nonatomic) NSArray *selectedPlacePhotoDetails;
+@property (nonatomic) NSDictionary *selectedPlace;
+@property (nonatomic) NSArray *places;
 
 @end
 
 @implementation TopPlacesViewController
 
 @synthesize places = _places;
-@synthesize selectedPlacePhotoDetails = _selectedPlacePhotoDetails;
+@synthesize selectedPlace = _selectedPlace;
 
-- (NSArray *)places
+- (void)setPlaces:(NSArray *)places
 {
-	if (!_places) {
-		_places = [FlickrFetcher topPlaces];
-	}
-	return _places;
-}
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+	_places = places;
+	[self.tableView reloadData];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	dispatch_queue_t downloadTopPlaces = dispatch_queue_create("topPlaces", NULL);
+	dispatch_async(downloadTopPlaces, ^{
+		NSArray *tempPlaces = [FlickrFetcher topPlaces];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			self.places = tempPlaces;
+		});
+	});
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,7 +67,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-	[segue.destinationViewController setPhotoDetails:self.selectedPlacePhotoDetails];
+	[segue.destinationViewController setPlace:self.selectedPlace];
 }
 
 
@@ -78,7 +75,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.selectedPlacePhotoDetails = [FlickrFetcher photosInPlace:[self.places objectAtIndex:indexPath.row] maxResults:50];
+    self.selectedPlace = [self.places objectAtIndex:indexPath.row];
 	[self performSegueWithIdentifier:@"showPhotoList" sender:self];
 }
 

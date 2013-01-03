@@ -12,6 +12,7 @@
 @interface PhotoInfoViewController ()
 
 @property (nonatomic) NSURL *selectedPhotoURL;
+@property (nonatomic, readonly) NSArray *photoDetails;
 @property (nonatomic) NSMutableArray *selectedPhotos;
 
 @end
@@ -21,6 +22,15 @@
 @synthesize photoDetails = _photoDetails;
 @synthesize selectedPhotoURL = _selectedPhotoURL;
 @synthesize selectedPhotos = _selectedPhotos;
+@synthesize place = _place;
+
+- (NSArray*)photoDetails
+{
+	if (!_photoDetails) {
+		_photoDetails = [FlickrFetcher photosInPlace:self.place maxResults:50];
+	}
+	return _photoDetails;
+}
 
 - (NSMutableArray *)selectedPhotos
 {

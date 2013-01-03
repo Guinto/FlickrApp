@@ -12,6 +12,6 @@
 
 @interface PhotoInfoViewController : UITableViewController
 
-@property (nonatomic) NSArray *photoDetails;
+@property (nonatomic) NSDictionary *place;
 
 @end
