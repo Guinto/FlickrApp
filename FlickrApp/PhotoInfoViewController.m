@@ -12,7 +12,7 @@
 @interface PhotoInfoViewController ()
 
 @property (nonatomic) NSURL *selectedPhotoURL;
-@property (nonatomic, readonly) NSArray *photoDetails;
+@property (nonatomic) NSArray *photoDetails;
 @property (nonatomic) NSMutableArray *selectedPhotos;
 
 @end
@@ -24,10 +24,22 @@
 @synthesize selectedPhotos = _selectedPhotos;
 @synthesize place = _place;
 
+- (void)setPhotoDetails:(NSArray *)photoDetails
+{
+	_photoDetails = photoDetails;
+	[self.tableView reloadData];
+}
+
 - (NSArray*)photoDetails
 {
 	if (!_photoDetails) {
-		_photoDetails = [FlickrFetcher photosInPlace:self.place maxResults:50];
+		dispatch_queue_t downloadPhotosInPlace = dispatch_queue_create("downloadPhotosInPlace", NULL);
+		dispatch_async(downloadPhotosInPlace, ^{
+			NSArray *tempPhotosInPlace = [FlickrFetcher photosInPlace:self.place maxResults:50];
+			dispatch_async(dispatch_get_main_queue(), ^{
+				self.photoDetails = tempPhotosInPlace;
+			});
+		});
 	}
 	return _photoDetails;
 }
