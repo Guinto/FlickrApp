@@ -51,11 +51,17 @@
 {
     [super viewDidLoad];
 	if (!self.photoDetails) {
+		UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+		spinner.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+		[self.view addSubview:spinner];
+		[spinner startAnimating];
+	
 		dispatch_queue_t downloadPhotosInPlace = dispatch_queue_create("downloadPhotosInPlace", NULL);
 		dispatch_async(downloadPhotosInPlace, ^{
 			NSArray *tempPhotosInPlace = [FlickrFetcher photosInPlace:self.place maxResults:50];
 			dispatch_async(dispatch_get_main_queue(), ^{
 				self.photoDetails = tempPhotosInPlace;
+				[spinner stopAnimating];
 			});
 		});
 	}

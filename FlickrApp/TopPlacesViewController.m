@@ -31,11 +31,17 @@
 {
     [super viewDidLoad];
 	if (!self.places) {
+		UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+		spinner.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+		[self.view addSubview:spinner];
+		[spinner startAnimating];
+		
 		dispatch_queue_t downloadTopPlaces = dispatch_queue_create("topPlaces", NULL);
 		dispatch_async(downloadTopPlaces, ^{
 			NSArray *tempPlaces = [FlickrFetcher topPlaces];
 			dispatch_async(dispatch_get_main_queue(), ^{
 				self.places = tempPlaces;
+				[spinner stopAnimating];
 			});
 		});
 	}

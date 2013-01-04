@@ -21,14 +21,6 @@
 @synthesize photoURL = _photoURL;
 @synthesize photo = _photo;
 
-- (void)setPhotoURL:(NSURL *)photoURL
-{
-	if (_photoURL != photoURL) {
-		_photoURL = photoURL;
-		[self setImage];
-	}
-}
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -41,13 +33,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
 	if (!self.photoURL) {
+		UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+		spinner.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+		[self.view addSubview:spinner];
+		[spinner startAnimating];
+		
 		dispatch_queue_t downloadPhotoURL = dispatch_queue_create("downloadPhotoURL", NULL);
 		dispatch_async(downloadPhotoURL, ^{
 			NSURL *tempPhotoURL = [FlickrFetcher urlForPhoto:self.photo format:FlickrPhotoFormatLarge];
 			dispatch_async(dispatch_get_main_queue(), ^{
 				self.photoURL = tempPhotoURL;
+				[self setImage];
+				[spinner stopAnimating];
 			});
 		});
 	}
@@ -59,12 +62,7 @@
 	
 	self.photoView = [[UIImageView alloc] initWithImage:photoImage];
 	
-	[self.photoView setContentMode:UIViewContentModeScaleToFill];
-	self.photoView.frame = CGRectMake(0, 0, self.photoView.bounds.size.width, self.photoView.bounds.size.height);
-	
 	[self.scrollView addSubview:self.photoView];
-	
-	self.scrollView.frame = CGRectMake(0, 0, self.photoView.frame.size.width, self.photoView.frame.size.height);
 	[self.scrollView setContentSize:CGSizeMake(self.photoView.frame.size.width, self.photoView.frame.size.height)];
 	
 	self.scrollView.delegate = self;
