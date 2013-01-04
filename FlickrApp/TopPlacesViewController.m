@@ -30,13 +30,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	dispatch_queue_t downloadTopPlaces = dispatch_queue_create("topPlaces", NULL);
-	dispatch_async(downloadTopPlaces, ^{
-		NSArray *tempPlaces = [FlickrFetcher topPlaces];
-		dispatch_async(dispatch_get_main_queue(), ^{
-			self.places = tempPlaces;
+	if (!self.places) {
+		dispatch_queue_t downloadTopPlaces = dispatch_queue_create("topPlaces", NULL);
+		dispatch_async(downloadTopPlaces, ^{
+			NSArray *tempPlaces = [FlickrFetcher topPlaces];
+			dispatch_async(dispatch_get_main_queue(), ^{
+				self.places = tempPlaces;
+			});
 		});
-	});
+	}
 }
 
 - (void)didReceiveMemoryWarning

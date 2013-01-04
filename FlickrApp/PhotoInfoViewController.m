@@ -11,7 +11,7 @@
 
 @interface PhotoInfoViewController ()
 
-@property (nonatomic) NSURL *selectedPhotoURL;
+@property (nonatomic) NSDictionary *selectedPhoto;
 @property (nonatomic) NSArray *photoDetails;
 @property (nonatomic) NSMutableArray *selectedPhotos;
 
@@ -20,7 +20,7 @@
 @implementation PhotoInfoViewController
 
 @synthesize photoDetails = _photoDetails;
-@synthesize selectedPhotoURL = _selectedPhotoURL;
+@synthesize selectedPhoto = _selectedPhoto;
 @synthesize selectedPhotos = _selectedPhotos;
 @synthesize place = _place;
 
@@ -28,20 +28,6 @@
 {
 	_photoDetails = photoDetails;
 	[self.tableView reloadData];
-}
-
-- (NSArray*)photoDetails
-{
-	if (!_photoDetails) {
-		dispatch_queue_t downloadPhotosInPlace = dispatch_queue_create("downloadPhotosInPlace", NULL);
-		dispatch_async(downloadPhotosInPlace, ^{
-			NSArray *tempPhotosInPlace = [FlickrFetcher photosInPlace:self.place maxResults:50];
-			dispatch_async(dispatch_get_main_queue(), ^{
-				self.photoDetails = tempPhotosInPlace;
-			});
-		});
-	}
-	return _photoDetails;
 }
 
 - (NSMutableArray *)selectedPhotos
@@ -64,6 +50,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	if (!self.photoDetails) {
+		dispatch_queue_t downloadPhotosInPlace = dispatch_queue_create("downloadPhotosInPlace", NULL);
+		dispatch_async(downloadPhotosInPlace, ^{
+			NSArray *tempPhotosInPlace = [FlickrFetcher photosInPlace:self.place maxResults:50];
+			dispatch_async(dispatch_get_main_queue(), ^{
+				self.photoDetails = tempPhotosInPlace;
+			});
+		});
+	}
 }
 
 - (void)didReceiveMemoryWarning
@@ -101,7 +96,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-	[segue.destinationViewController setPhotoURL:self.selectedPhotoURL];
+	[segue.destinationViewController setPhoto:self.selectedPhoto];
 }
 
 #pragma mark - Table view delegate
@@ -121,7 +116,7 @@
 	[defaults setObject:self.selectedPhotos forKey:@"recentPhotos"];
 	[defaults synchronize];
 	
-	self.selectedPhotoURL = [FlickrFetcher urlForPhoto:photo format:FlickrPhotoFormatLarge];
+	self.selectedPhoto = photo;
 	[self performSegueWithIdentifier:@"showPhoto" sender:self];
 }
 

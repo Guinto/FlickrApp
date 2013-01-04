@@ -11,14 +11,14 @@
 
 @interface RecentlyViewedViewController ()
 
-@property (nonatomic) NSURL *selectedPhotoURL;
+@property (nonatomic) NSDictionary *selectedPhoto;
 
 @end
 
 @implementation RecentlyViewedViewController
 
 @synthesize recentPhotoDetails = _recentPhotoDetails;
-@synthesize selectedPhotoURL = _selectedPhotoURL;
+@synthesize selectedPhoto = _selectedPhoto;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -49,7 +49,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-	[segue.destinationViewController setPhotoURL:self.selectedPhotoURL];
+	[segue.destinationViewController setPhoto:self.selectedPhoto];
 }
 
 #pragma mark - Table view data source
@@ -85,7 +85,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	NSDictionary *photo = [self.recentPhotoDetails objectAtIndex:indexPath.row];
-	self.selectedPhotoURL = [FlickrFetcher urlForPhoto:photo format:FlickrPhotoFormatLarge];
+	self.selectedPhoto = photo;
 	[self performSegueWithIdentifier:@"showPhoto" sender:self];
 }
 
