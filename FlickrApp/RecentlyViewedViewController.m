@@ -91,7 +91,14 @@
 {
 	NSDictionary *photo = [self.recentPhotoDetails objectAtIndex:indexPath.row];
 	self.selectedPhoto = photo;
-	[self performSegueWithIdentifier:@"showPhoto" sender:self];
+	
+	if (self.splitViewController) {
+		PhotoViewController *detailViewController = [[self.splitViewController childViewControllers] lastObject];
+		[detailViewController setPhoto:self.selectedPhoto];
+	} else {
+		[self performSegueWithIdentifier:@"showPhoto" sender:nil];
+	}
+
 }
 
 @end

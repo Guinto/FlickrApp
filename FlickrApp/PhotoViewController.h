@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PhotoCacheManager.h"
 
-@interface PhotoViewController : UIViewController <UIScrollViewAccessibilityDelegate>
+@interface PhotoViewController : UIViewController <UIScrollViewAccessibilityDelegate, UISplitViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (nonatomic) NSDictionary *photo;

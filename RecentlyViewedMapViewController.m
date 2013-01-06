@@ -7,6 +7,7 @@
 //
 
 #import "RecentlyViewedMapViewController.h"
+#import "PhotoViewController.h"
 
 @interface RecentlyViewedMapViewController ()
 
@@ -100,7 +101,14 @@
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
 	self.selectedPhoto = ((PhotoAnnotation *)view.annotation).photo;
-	[self performSegueWithIdentifier:@"showPhoto" sender:nil];
+	
+	if (self.splitViewController) {
+		PhotoViewController *detailViewController = [[self.splitViewController childViewControllers] lastObject];
+		[detailViewController setPhoto:self.selectedPhoto];
+	} else {
+		[self performSegueWithIdentifier:@"showPhoto" sender:nil];
+	}
+	
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view

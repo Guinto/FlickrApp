@@ -45,6 +45,9 @@
 
 + (NSData *)getPhotoData:(NSDictionary *)photoInfo
 {
+	if (!photoInfo) {
+		return nil;
+	}
 	NSFileManager *manager = [[NSFileManager alloc] init];
 	NSURL *path = [[manager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
 	NSURL *photoCache = [path URLByAppendingPathComponent:@"photoCache"];

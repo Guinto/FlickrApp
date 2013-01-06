@@ -7,6 +7,7 @@
 //
 
 #import "PhotoMapViewController.h"
+#import "PhotoViewController.h"
 
 @interface PhotoMapViewController ()
 @property (nonatomic) NSArray *photoDetails;
@@ -106,7 +107,7 @@
 		aView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"annotation"];
 		aView.canShowCallout = YES;
 		aView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-		aView.leftCalloutAccessoryView = [[UIImageView alloc] init];
+		aView.leftCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(aView.leftCalloutAccessoryView.frame.origin.x, aView.leftCalloutAccessoryView.frame.origin.y, 32, 32)];
 		aView.enabled = YES;
 		
 	}
@@ -138,7 +139,12 @@
 	[defaults setObject:self.selectedPhotos forKey:@"recentPhotos"];
 	[defaults synchronize];
 	
-	[self performSegueWithIdentifier:@"showPhoto" sender:nil];
+	if (self.splitViewController) {
+		PhotoViewController *detailViewController = [[self.splitViewController childViewControllers] lastObject];
+		[detailViewController setPhoto:self.selectedPhoto];
+	} else {
+		[self performSegueWithIdentifier:@"showPhoto" sender:nil];
+	}
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view

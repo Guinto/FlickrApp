@@ -104,7 +104,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kBK-UY-vV1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1669" y="99"/>
+            <point key="canvasLocation" x="2037" y="-101"/>
         </scene>
         <!--Photo Map View Controller - Photos-->
         <scene sceneID="qo0-w2-Wyq">
@@ -132,7 +132,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWr-Kq-F5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2299" y="-481"/>
+            <point key="canvasLocation" x="2555" y="-577"/>
         </scene>
         <!--Photo View Controller - Photo-->
         <scene sceneID="MAs-bH-lo1">
@@ -142,7 +142,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.5" maximumZoomScale="2" translatesAutoresizingMaskIntoConstraints="NO" id="QNb-p5-1aL"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="2" translatesAutoresizingMaskIntoConstraints="NO" id="QNb-p5-1aL"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -159,7 +159,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Ei-DY-i42" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2399" y="297"/>
+            <point key="canvasLocation" x="3047" y="-87"/>
         </scene>
         <!--Recently Viewed View Controller - Recent Photos-->
         <scene sceneID="TOZ-2d-8SE">
@@ -210,7 +210,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lb6-ZU-WJJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1669" y="685"/>
+            <point key="canvasLocation" x="2013" y="517"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="15">
@@ -295,7 +295,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n0S-f6-TNs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1459" y="-697"/>
+            <point key="canvasLocation" x="1587" y="-689"/>
         </scene>
         <!--Recently Viewed Map View Controller - Photos-->
         <scene sceneID="Dxx-Dx-Tfa">
@@ -323,7 +323,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DiQ-sv-xEG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2131" y="815"/>
+            <point key="canvasLocation" x="2547" y="847"/>
         </scene>
     </scenes>
     <resources>
@@ -375,6 +375,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="7fV-LC-pht"/>
-        <segue reference="lBF-uu-WTE"/>
+        <segue reference="ug1-xk-zN5"/>
     </inferredMetricsTieBreakers>
 </document>
