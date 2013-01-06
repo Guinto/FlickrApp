@@ -200,7 +200,7 @@
                     <navigationItem key="navigationItem" title="Recent Photos" id="gub-WJ-Jlp">
                         <barButtonItem key="rightBarButtonItem" title="Map View" id="QJH-pj-5Wg">
                             <connections>
-                                <segue destination="o4F-VC-Uz4" kind="push" identifier="showMap" id="BDC-7V-S2P"/>
+                                <segue destination="a8a-Ts-5tO" kind="push" identifier="showMap" id="Xus-pL-kGG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -297,6 +297,34 @@
             </objects>
             <point key="canvasLocation" x="1459" y="-697"/>
         </scene>
+        <!--Recently Viewed Map View Controller - Photos-->
+        <scene sceneID="Dxx-Dx-Tfa">
+            <objects>
+                <viewController id="a8a-Ts-5tO" customClass="RecentlyViewedMapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ni4-n5-EiJ">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="TOW-SO-rWh"/>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TOW-SO-rWh" firstAttribute="trailing" secondItem="ni4-n5-EiJ" secondAttribute="trailing" type="default" id="8PW-Cf-xIH"/>
+                            <constraint firstItem="TOW-SO-rWh" firstAttribute="bottom" secondItem="ni4-n5-EiJ" secondAttribute="bottom" type="default" id="BPp-gK-62b"/>
+                            <constraint firstItem="TOW-SO-rWh" firstAttribute="top" secondItem="ni4-n5-EiJ" secondAttribute="top" type="default" id="OLT-xF-Q0u"/>
+                            <constraint firstItem="TOW-SO-rWh" firstAttribute="leading" secondItem="ni4-n5-EiJ" secondAttribute="leading" type="default" id="ggb-jb-vTI"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Photos" id="Wkg-cU-0aM"/>
+                    <connections>
+                        <outlet property="map" destination="TOW-SO-rWh" id="U0n-MO-b9P"/>
+                        <segue destination="ilY-xZ-9xQ" kind="push" identifier="showPhoto" id="5Td-ET-zwa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DiQ-sv-xEG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2131" y="815"/>
+        </scene>
     </scenes>
     <resources>
         <image name="first.png" width="30" height="30"/>
@@ -327,6 +355,12 @@
                 <relationship kind="outlet" name="map" candidateClass="MKMapView"/>
             </relationships>
         </class>
+        <class className="RecentlyViewedMapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecentlyViewedMapViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="map" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
         <class className="RecentlyViewedViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RecentlyViewedViewController.h"/>
         </class>
@@ -341,7 +375,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="7fV-LC-pht"/>
-        <segue reference="ug1-xk-zN5"/>
-        <segue reference="xAZ-uc-F6U"/>
+        <segue reference="lBF-uu-WTE"/>
     </inferredMetricsTieBreakers>
 </document>

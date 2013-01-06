@@ -1,43 +1,28 @@
 //
-//  PhotoMapViewController.m
+//  RecentlyViewedMapViewController.m
 //  FlickrApp
 //
 //  Created by Trent Ellingsen on 1/5/13.
 //  Copyright (c) 2013 Trent Ellingsen. All rights reserved.
 //
 
-#import "PhotoMapViewController.h"
+#import "RecentlyViewedMapViewController.h"
 
-@interface PhotoMapViewController ()
-@property (nonatomic) NSArray *photoDetails;
+@interface RecentlyViewedMapViewController ()
+
 @property (nonatomic) NSDictionary *selectedPhoto;
-@property (nonatomic) NSMutableArray *selectedPhotos;
+
 @end
 
-@implementation PhotoMapViewController
+@implementation RecentlyViewedMapViewController
 
+@synthesize selectedPhoto = _selectedPhoto;
 @synthesize map = _map;
-@synthesize photoDetails = _photoDetails;
-
-
-- (NSMutableArray *)selectedPhotos
-{
-	if (!_selectedPhotos) {
-		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-		_selectedPhotos = [defaults mutableArrayValueForKey:@"recentPhotos"];
-	}
-	return _selectedPhotos;
-}
-
-- (void)setPhotoDetails:(NSArray *)photoDetails
-{
-	_photoDetails = photoDetails;
-	[self addAnnotations];
-}
+@synthesize recentPhotoDetails = _recentPhotoDetails;
 
 - (void)addAnnotations
 {
-	for (NSDictionary *photo in self.photoDetails) {
+	for (NSDictionary *photo in self.recentPhotoDetails) {
 		PhotoAnnotation *photoAnnotation = [[PhotoAnnotation alloc] init];
 		photoAnnotation.photo = photo;
 		[self.map addAnnotation:photoAnnotation];
@@ -81,22 +66,11 @@
     [super viewDidLoad];
 	
 	self.map.delegate = self;
-	
-	if (!self.photoDetails) {
-		UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-		spinner.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
-		[self.view addSubview:spinner];
-		[spinner startAnimating];
-		
-		dispatch_queue_t downloadPhotosInPlace = dispatch_queue_create("downloadPhotosInPlace", NULL);
-		dispatch_async(downloadPhotosInPlace, ^{
-			NSArray *tempPhotosInPlace = [FlickrFetcher photosInPlace:self.place maxResults:50];
-			dispatch_async(dispatch_get_main_queue(), ^{
-				self.photoDetails = tempPhotosInPlace;
-				[spinner stopAnimating];
-			});
-		});
-	}
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+	[self addAnnotations];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
@@ -126,18 +100,6 @@
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
 	self.selectedPhoto = ((PhotoAnnotation *)view.annotation).photo;
-	
-	if (![self.selectedPhotos containsObject:self.selectedPhoto]) {
-		if ([self.selectedPhotos count] >= 20) {
-			[self.selectedPhotos removeLastObject];
-		}
-		[self.selectedPhotos addObject:self.selectedPhoto];
-	}
-	
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	[defaults setObject:self.selectedPhotos forKey:@"recentPhotos"];
-	[defaults synchronize];
-	
 	[self performSegueWithIdentifier:@"showPhoto" sender:nil];
 }
 
@@ -163,6 +125,7 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 @end

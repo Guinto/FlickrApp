@@ -33,18 +33,10 @@
 - (NSMutableArray *)selectedPhotos
 {
 	if (!_selectedPhotos) {
-		_selectedPhotos = [[NSMutableArray alloc] init];
+		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+		_selectedPhotos = [defaults mutableArrayValueForKey:@"recentPhotos"];
 	}
 	return _selectedPhotos;
-}
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
 }
 
 - (void)viewDidLoad
