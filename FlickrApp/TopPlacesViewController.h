@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PlacesMapViewController.h"
 #import "FlickrAPIKey.h"
 #import "FlickrFetcher.h"
 

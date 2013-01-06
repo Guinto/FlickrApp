@@ -40,7 +40,13 @@
                             <outlet property="delegate" destination="VQ0-HW-3Ah" id="Cgt-fg-ehZ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Places" id="LOX-hz-shU"/>
+                    <navigationItem key="navigationItem" title="Places" id="LOX-hz-shU">
+                        <barButtonItem key="rightBarButtonItem" title="Map View" id="dg5-rI-Jpv">
+                            <connections>
+                                <segue destination="9uW-s1-TdW" kind="push" identifier="showMap" id="AC5-r9-xYQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="PGV-pu-qVA" kind="push" identifier="showPhotoList" id="rFw-Ht-Y0b"/>
                     </connections>
@@ -85,14 +91,48 @@
                             <outlet property="delegate" destination="PGV-pu-qVA" id="JAr-aL-gUh"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Photos" id="70b-Nt-Jac"/>
+                    <navigationItem key="navigationItem" title="Photos" id="70b-Nt-Jac">
+                        <barButtonItem key="rightBarButtonItem" title="Map View" id="cVQ-kF-d9O">
+                            <connections>
+                                <segue destination="o4F-VC-Uz4" kind="push" identifier="showMap" id="xAZ-uc-F6U"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="ilY-xZ-9xQ" kind="push" identifier="showPhoto" id="ug1-xk-zN5"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kBK-UY-vV1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1659" y="-63"/>
+            <point key="canvasLocation" x="1669" y="99"/>
+        </scene>
+        <!--Photo Map View Controller - Photos-->
+        <scene sceneID="qo0-w2-Wyq">
+            <objects>
+                <viewController id="o4F-VC-Uz4" customClass="PhotoMapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sKr-y3-OZe">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1Jp-9d-uet"/>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1Jp-9d-uet" firstAttribute="trailing" secondItem="sKr-y3-OZe" secondAttribute="trailing" type="default" id="9tb-2i-vkq"/>
+                            <constraint firstItem="1Jp-9d-uet" firstAttribute="bottom" secondItem="sKr-y3-OZe" secondAttribute="bottom" type="default" id="K2E-e5-d8o"/>
+                            <constraint firstItem="1Jp-9d-uet" firstAttribute="leading" secondItem="sKr-y3-OZe" secondAttribute="leading" type="default" id="Oes-T2-8AD"/>
+                            <constraint firstItem="1Jp-9d-uet" firstAttribute="top" secondItem="sKr-y3-OZe" secondAttribute="top" type="default" id="X4B-ZW-jY6"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Photos" id="fwF-Qt-00z"/>
+                    <connections>
+                        <outlet property="map" destination="1Jp-9d-uet" id="h5E-xE-h49"/>
+                        <segue destination="ilY-xZ-9xQ" kind="push" identifier="showPhoto" id="xgE-jq-RIY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bWr-Kq-F5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2299" y="-481"/>
         </scene>
         <!--Photo View Controller - Photo-->
         <scene sceneID="MAs-bH-lo1">
@@ -119,7 +159,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Ei-DY-i42" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2109" y="223"/>
+            <point key="canvasLocation" x="2399" y="297"/>
         </scene>
         <!--Recently Viewed View Controller - Recent Photos-->
         <scene sceneID="TOZ-2d-8SE">
@@ -157,14 +197,20 @@
                             <outlet property="delegate" destination="fdY-sc-GTJ" id="PKg-7a-aJh"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Recent Photos" id="gub-WJ-Jlp"/>
+                    <navigationItem key="navigationItem" title="Recent Photos" id="gub-WJ-Jlp">
+                        <barButtonItem key="rightBarButtonItem" title="Map View" id="QJH-pj-5Wg">
+                            <connections>
+                                <segue destination="o4F-VC-Uz4" kind="push" identifier="showMap" id="BDC-7V-S2P"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="ilY-xZ-9xQ" kind="push" identifier="showPhoto" id="lBF-uu-WTE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lb6-ZU-WJJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1161" y="525"/>
+            <point key="canvasLocation" x="1669" y="685"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="15">
@@ -223,6 +269,34 @@
             </objects>
             <point key="canvasLocation" x="691" y="525"/>
         </scene>
+        <!--Places Map View Controller - Places-->
+        <scene sceneID="ZhJ-v2-rwV">
+            <objects>
+                <viewController id="9uW-s1-TdW" customClass="PlacesMapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1KM-2C-zl3">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="CT5-nh-QwJ"/>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CT5-nh-QwJ" firstAttribute="trailing" secondItem="1KM-2C-zl3" secondAttribute="trailing" type="default" id="6IW-yk-Y6B"/>
+                            <constraint firstItem="CT5-nh-QwJ" firstAttribute="leading" secondItem="1KM-2C-zl3" secondAttribute="leading" type="default" id="Stk-Cc-QB1"/>
+                            <constraint firstItem="CT5-nh-QwJ" firstAttribute="top" secondItem="1KM-2C-zl3" secondAttribute="top" type="default" id="W7r-m5-tPR"/>
+                            <constraint firstItem="CT5-nh-QwJ" firstAttribute="bottom" secondItem="1KM-2C-zl3" secondAttribute="bottom" type="default" id="biP-5l-2V8"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Places" id="I4S-TI-TRl"/>
+                    <connections>
+                        <outlet property="map" destination="CT5-nh-QwJ" id="VE9-5T-ekO"/>
+                        <segue destination="PGV-pu-qVA" kind="push" identifier="showPhotoList" id="7fV-LC-pht"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n0S-f6-TNs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1459" y="-697"/>
+        </scene>
     </scenes>
     <resources>
         <image name="first.png" width="30" height="30"/>
@@ -235,10 +309,22 @@
         <class className="PhotoInfoViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoInfoViewController.h"/>
         </class>
+        <class className="PhotoMapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoMapViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="map" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
         <class className="PhotoViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="PlacesMapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PlacesMapViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="map" candidateClass="MKMapView"/>
             </relationships>
         </class>
         <class className="RecentlyViewedViewController" superclassName="UITableViewController">
@@ -254,6 +340,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="lBF-uu-WTE"/>
+        <segue reference="7fV-LC-pht"/>
+        <segue reference="ug1-xk-zN5"/>
+        <segue reference="xAZ-uc-F6U"/>
     </inferredMetricsTieBreakers>
 </document>

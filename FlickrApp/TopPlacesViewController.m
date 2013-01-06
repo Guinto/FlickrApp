@@ -75,7 +75,12 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-	[segue.destinationViewController setPlace:self.selectedPlace];
+	if ([segue.identifier isEqualToString:@"showMap"]) {
+		[segue.destinationViewController setPlaces:self.places];
+	}
+	if ([segue.identifier isEqualToString:@"showPhotosList"]) {
+		[segue.destinationViewController setPlace:self.selectedPlace];
+	}
 }
 
 

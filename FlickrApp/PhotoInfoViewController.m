@@ -102,7 +102,12 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-	[segue.destinationViewController setPhoto:self.selectedPhoto];
+	if ([segue.identifier isEqualToString:@"showPhoto"]) {
+		[segue.destinationViewController setPhoto:self.selectedPhoto];
+	}
+	if ([segue.identifier isEqualToString:@"showMap"]) {
+		[segue.destinationViewController setPlace:self.place];
+	}
 }
 
 #pragma mark - Table view delegate
