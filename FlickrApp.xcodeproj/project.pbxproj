@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D96CA17016991E5800F815CD /* PhotoCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D96CA16F16991E5800F815CD /* PhotoCacheManager.m */; };
 		D99D43EE166EDA3D00FDE745 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D99D43ED166EDA3D00FDE745 /* UIKit.framework */; };
 		D99D43F0166EDA3D00FDE745 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D99D43EF166EDA3D00FDE745 /* Foundation.framework */; };
 		D99D43F2166EDA3D00FDE745 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D99D43F1166EDA3D00FDE745 /* CoreGraphics.framework */; };
@@ -29,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D96CA16E16991E5800F815CD /* PhotoCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCacheManager.h; sourceTree = "<group>"; };
+		D96CA16F16991E5800F815CD /* PhotoCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCacheManager.m; sourceTree = "<group>"; };
 		D99D43E9166EDA3D00FDE745 /* FlickrApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D99D43ED166EDA3D00FDE745 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D99D43EF166EDA3D00FDE745 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -123,6 +126,8 @@
 				D99D4412166EDA3D00FDE745 /* second.png */,
 				D99D4414166EDA3D00FDE745 /* second@2x.png */,
 				D99D43F4166EDA3D00FDE745 /* Supporting Files */,
+				D96CA16E16991E5800F815CD /* PhotoCacheManager.h */,
+				D96CA16F16991E5800F815CD /* PhotoCacheManager.m */,
 			);
 			path = FlickrApp;
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 				D99D4429166EE10700FDE745 /* RecentlyViewedViewController.m in Sources */,
 				D99D4438166F033E00FDE745 /* PhotoInfoViewController.m in Sources */,
 				D99D443C166F0D5500FDE745 /* PhotoViewController.m in Sources */,
+				D96CA17016991E5800F815CD /* PhotoCacheManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

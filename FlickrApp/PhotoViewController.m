@@ -11,14 +11,14 @@
 
 @interface PhotoViewController ()
 @property (nonatomic) UIImageView *photoView;
-@property (nonatomic) NSURL *photoURL;
+@property (nonatomic) NSData *photoData;
 @end
 
 @implementation PhotoViewController
 
 @synthesize scrollView = _scrollView;
 @synthesize photoView = _photoView;
-@synthesize photoURL = _photoURL;
+@synthesize photoData = _photoData;
 @synthesize photo = _photo;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -38,7 +38,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
-	if (!self.photoURL) {
+	if (!self.photoData) {
 		UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 		spinner.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
 		[self.view addSubview:spinner];
@@ -46,9 +46,9 @@
 		
 		dispatch_queue_t downloadPhotoURL = dispatch_queue_create("downloadPhotoURL", NULL);
 		dispatch_async(downloadPhotoURL, ^{
-			NSURL *tempPhotoURL = [FlickrFetcher urlForPhoto:self.photo format:FlickrPhotoFormatLarge];
+			NSData *tempPhotoData = [PhotoCacheManager getPhotoData:self.photo];
 			dispatch_async(dispatch_get_main_queue(), ^{
-				self.photoURL = tempPhotoURL;
+				self.photoData = tempPhotoData;
 				[self setImage];
 				[spinner stopAnimating];
 			});
@@ -58,7 +58,7 @@
 
 - (void)setImage
 {
-	UIImage *photoImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:self.photoURL]];
+	UIImage *photoImage = [UIImage imageWithData:self.photoData];
 	
 	self.photoView = [[UIImageView alloc] initWithImage:photoImage];
 	
